@@ -7,7 +7,7 @@ receiving message-signalled interrupts and presenting them to the core over CSRs
 
 Part of the [Tape-Out](https://github.com/Tape-Out) IP library: Bluespec IP over the
 bus-neutral contracts in [`hwcore`](https://github.com/Tape-Out/hwcore), assembled by
-[`loom`](https://github.com/Tape-Out/loom). Maturity runs `planned` -> `simulated` ->
+[`xirang`](https://github.com/Tape-Out/xirang). Maturity runs `planned` -> `simulated` ->
 `fpga-proven` -> `asic-ready` -> `silicon-proven`.
 
 ## Scope
