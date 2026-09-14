@@ -23,7 +23,7 @@ The specification is the ratified
 
 ## Status
 
-Planned. The entry in [`index`](https://github.com/Tape-Out/index) tracks what lands when.
+Planned, not started. Work starts when the core count outgrows what plic serves; its arbitration can reuse the fold in plic's Prio.bs.
 
 ## License
 
