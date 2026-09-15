@@ -1,0 +1,25 @@
+package ImsicSel where
+
+-- IMSIC 选号：挂起、使能、低于阈值的号里取最小的（AIA 3.3 *Lower identity numbers have higher priority.*），
+-- 返回号，0 表示没有。与 plic/Prio.bs 同形而方向不同：那边比优先级值，这里只比号，号小者胜。
+-- 平衡树 fold：「左边有就留左边」满足结合律，fold 两两配对保持左右次序，比较链只有 log2 n 级。
+
+import Vector
+
+lowest :: (Add 1 k n) => Vector n Bool -> Bit 11
+lowest live =
+  let cand l i = if l then (True, fromInteger i) else (False, 0)
+      pick a b = if tpl_1 a then a else b
+  in  tpl_2 (fold pick (zipWith cand live genVector))
+
+-- *topei 的格式（AIA 3.9）：26:16 是号，10:0 是优先级，IMSIC 里优先级就是号
+topeiOf :: Bit 11 -> Bit 32
+topeiOf i = (zeroExtend i << 16) | zeroExtend i
+
+-- 号数是 64 的倍数减一，在 63 到 2047 之间（AIA 3.1）；不合规在编译期就报，不留到仿真
+idsChecked :: Integer -> Integer
+idsChecked n =
+  if n < 63 || n > 2047 || mod (n + 1) 64 /= 0
+  then error ("IMSIC: " +++ integerToString n +++
+              " interrupt identities, AIA 3.1 needs one less than a multiple of 64, between 63 and 2047")
+  else n
