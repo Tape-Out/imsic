@@ -38,6 +38,7 @@ emit:
   bus: apb4
 deps:
   hwcore: ^0.1
+  amba: ^0.1
 area:
   base:
     fixed: 2916.76
