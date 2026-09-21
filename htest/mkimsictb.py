@@ -23,7 +23,7 @@ verdict = ("writes to seteipnum_le set only implemented identities, other access
 
 TEMPLATE = r'''package Imsic@L@Tb;
 
-// 由 tb/mkimsictb.py 生成，勿手改
+// 由 htest/mkimsictb.py 生成，勿手改
 
 import StmtFSM::*;
 import RegIf::*;
